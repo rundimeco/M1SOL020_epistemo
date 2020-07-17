@@ -1,0 +1,11 @@
+%\begin{table}
+%\caption{Lire avec le mauvais encodage (\textit{encoding})\label{encoding}}
+\begin{tabular}{l|l|l}
+~			&Encoding:Utf-8 	&Encoding:ISO-8859-1 (latin1)\\
+Interprété comme:Utf-8	&~&~\\%Étonnant que ça ait été si délicat à faire.
+Interprété comme:Utf-8	&Étonnant que ça ait été si délicat à faire. 			&\begin{verbatim}{�tonnant que �a ait �t� si d�licat � faire.}\end{verbatim}\\
+Interprété comme:Latin-1&\verbatim{Ãtonnant que Ã§a ait Ã©tÃ© si dÃ©licat Ã  faire.}			&Étonnant que ça ait été si délicat à faire.\\
+Interprété comme:Latin-1&~&~\\%\verbatim{Ãtonnant que Ã§a ait Ã©tÃ© si dÃ©licat Ã  faire.}
+\end{tabular}
+
+%\end{table}

@@ -1,0 +1,31 @@
+
+Règles d'additions en binaire:
+\begin{itemize}
+  \item$0 + 0 = 0$, on pose 0
+  \item$0 + 1 = 1$, on pose 1
+  \item$1 + 1 = 10$ : on pose 0 et on retient 1
+  \item$1 + 1 + \text{retenue} =11$ : on pose 1 et on retient 1
+\end{itemize}
+
+Explication pour \textbf{$1010_{(2)} + 0011_{(2)}$} (on lit de droite à gauche):
+
+\vspace{0.2cm}
+
+\begin{tabular}{l|p{2.5cm}|p{3cm}|p{3cm}|p{2.5cm}}
+	&	1	&0	&1	&0\\
+\hline
++	&	0	&0	&1	&1\\
+\hline
+\hline
+Opérations	&	on pose \textcolor{blue}{\textbf{1}}&0 + la \textcolor{red}{\textbf{retenue}}, on pose \textcolor{blue}{\textbf{1}} &on pose \textcolor{blue}{\textbf{0}} et on \textcolor{red}{\textbf{retient}} 1&on pose \textcolor{blue}{\textbf{1}}\\
+\hline
+Résultat	&1	&1	&0	&1	\\
+\end{tabular}
+
+\vspace{0.2cm}
+On a bien le résultat correspondant en système décimal : $10_{(10)} + 3_{(10)} = 13_{(10)}$
+
+\begin{itemize}
+  \item A vous pour : $1111_{(2)} + 1111_{(2)}$
+\end{itemize}
+

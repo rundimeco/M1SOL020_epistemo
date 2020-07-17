@@ -1,0 +1,177 @@
+
+\newcommand{\numTD}{TD7}
+\newcommand{\themeTD}{Annotation et Evaluation}
+\input{../entete_TD_epistemoM1}
+
+\hrule
+%%%%%%%%%%%%%%%%%%%%%%%%%EN-TETE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\renewcommand{\contentsname}{Sommaire du TD}
+%\tableofcontents
+
+\noindent\fcolorbox{red}{lightgray}{
+\begin{minipage}{12cm}
+\section*{Objectifs}
+
+\begin{itemize}
+  \item Comprendre les enjeux de l'annotation d'un corpus
+  \item Savoir évaluer l'annotation d'un corpus
+\end{itemize}
+\end{minipage}
+}
+
+\textcolor{blue}{\textbf{Attention, le dernier exercice est à rendre sur Moodle pour le 08/12/2019}}
+
+\section{Annotation linguistique}
+%  \subsection{ Fouille d'opinion et de sentiments sur des données textuelles}
+
+%Les textes ci-après sont extraits d'une discussion postée sur le forum de \url{www.webentrepreneurdebutant.fr}
+
+%TODO: include graphics
+% Dans les réponses des internautes, relevez de façon exhaustive toutes les tournures (grammaticales, communicatives, argumentatives, etc.) leur permettant d'exprimer leurs opinions. Classez-les par catégories, et, lorsque c'est pertinent, par polarité (positif, négatif, neutre).
+
+  \subsection{Annotation "simple"}
+
+ Annotez chaque mot des phrases ci-après à l'aide des étiquettes " Nom ", " Adjectif ", " Verbe ", " Pronom ", " Déterminant ", " Adverbe " ou " Autres " (notez vos annotations  sur papier ou dans un tableur, nous en aurons besoin plus tard).
+
+\begin{itemize}
+  \item La belle ferme le voile.
+  \item La petite brise la glace.
+\end{itemize}
+
+\subsection{Ambiguïté grammaticale}
+
+Annotez le paragraphe ci-dessous et comparez vos résultats avec votre voisin.
+\begin{itemize}
+  \item Une fois sortie de sa maison, elle se rend compte que la petite brise la glace, alors elle enfile un épais manteau.
+\end{itemize}
+
+
+  \section{Annotation par myriadisation (crowdsourcing)}
+Pour résoudre (une partie) des problèmes d'annotation, on peut avoir recours à l'avis de plusieurs experts ou à l'avis de la foule (myriadisation).
+
+  \subsection{Les principes du crowdsourcing}
+ Pour en comprendre les buts et les principes, allez observer le travail d'Alice Millour, doctorante en TAL à la Maison de la Recherche:
+\begin{itemize}
+\item \url{https://bisame.paris-sorbonne.fr/recettes/} 
+\item \url{http://krik.paris-sorbonne.fr/} 
+\end{itemize}
+ 
+ Un travail d'annotation par myriadisation peut être réalisé dans tous les domaines, sur tous les types de support, par ex: \url{https://www.zooniverse.org/about}.
+
+  \subsection{ Avantages et inconvénients du crowdsourcing}
+
+ Quels peuvent-ils être ?
+
+
+
+
+  \section{Evaluation des annotations}
+
+  Si plusieurs personnes ont annoté un échantillon de façon différente, comment déterminer lequel des annotateurs a raison ?
+
+%Pour évaluer la Cohérence intra-annotateur  comparez vos annotations sur les deux premiers exemples de l'exercice 1 avec votre voisin(e).
+ Établissez maintenant la \textbf{matrice de confusion} présentant les résultats de vos deux annotations (tableau \ref{matrice}). L'annotateur 1 représente les lignes, l'annotateur 2 représente les colonnes. A l'intersection de Nom et Nom le 3 signifie que dans 3 cas, les deux annotateurs ont été d'accord sur l'étiquette nom; Sur la même ligne, le "4" signifie que dans 4 cas, annotateur 1 a étiqueté "NOM" là où l'autre annotateur a étiqueté "Pronom".
+
+
+\begin{small}
+\begin{table}[h]
+\begin{tabular}{c|c|c|c|c|c|c|c|c}
+ & Nom & Adjectif & Verbe & Pronom & Déterminant & Adverbe & Autres&Total\\
+\hline
+ Nom &\cellcolor{lightgray}3 &	&	&4	&	&	&&\\
+\hline
+Adj.&	&\cellcolor{lightgray}	&	&	&	&	&&\\ 
+%\hline
+Ver. 	&	&	&\cellcolor{lightgray}	&	&	&	&&\\
+\hline
+Pro. &	&	&	&\cellcolor{lightgray}	&	&	&\\
+\hline
+Dét. &	&	&	&	&\cellcolor{lightgray}	&	&\\
+\hline
+Adv. &	&	&	&	&	&\cellcolor{lightgray}	&\\
+\hline
+Aut.  &	&	&	&	&	&	&\cellcolor{lightgray}\\
+\hline
+\hline
+Total	&	&	&	&	&	&	&\\
+\end{tabular}
+\caption{\label{matrice} Matrice de confusion pour l'étiquetage}
+\end{table}
+\end{small}
+Calculez pour chaque étiquette du jeu d'annotation le pourcentage d'accord réel (somme des cases grisées*100/nombre total d'échantillons).
+
+  \subsection{ Accord inter-annotateur}
+
+ La seconde étape est d'évaluer des annotations. Les échantillons utilisables (pour une analyse statistique, un classifieur automatique, etc.) sont ceux pour lesquels un grand nombre d'annotateurs s'accordent.
+
+Calculez le pourcentage d'accord réel pour chaque étiquette. Reportez ces résultats dans un tableau récapitulatif.
+
+ Pour vérifier que l'accord inter-annotateur est plus fort que le hasard, on peut mesurer le Kappa de Cohen :
+
+$K = \frac{P_o - P_e}{1-P_e}$
+
+Où $P_o$ est la proportion d'accord observé (somme des effectifs diagonaux divisée par la taille de l'échantillon).
+Où $P_e$ est la proportion d'accord aléatoire (somme des produits des effectifs marginaux pour une même classe, divisée par le carré de la taille de l'échantillon)
+%Reportez ces résultats ($P_o$, $P_e$ et K) dans un tableau récapitulatif.
+
+Evaluez le taux d'accord entre vous et votre voisin au moyen du code ci-dessous (Notebook sur Moodle) où pour chaque annotateur on crée une liste correspondant aux étiquettes données dans l'ordre (cf listes \texttt{annotateur1} et \texttt{annotateur2} du code ci-après).
+\newpage
+\begin{python}
+from nltk import agreement
+annotateur1 = ["DET", "NOM", "ADJ", "ADJ", "ADV", "DET","ADJ", "ADV"]
+annotateur2 = ["DET", "NOM", "ADJ", "NOM", "ADV", "NOM","ADV", "ADV"]
+annotateurs = [annotateur1, annotateur2]
+donnees = []
+for i in range(len(annotateurs)):
+  for j in range(len(annotateur1)):
+    donnees.append([str(i), str(j), annotateurs[i][j]])
+ratingtask = agreement.AnnotationTask(data=donnees)
+print("kappa " +str(ratingtask.kappa()))
+print("fleiss " + str(ratingtask.multi_kappa()))
+print("alpha " +str(ratingtask.alpha()))
+print("scotts " + str(ratingtask.pi()))
+\end{python}
+%Vous obtiendrez ces scores :
+%Fleiss Kappa for 3 raters = x (le Kappa) SE = x (l'écart-type)
+%95%CI = x to x (l'intervalle de confiance)
+
+On peut désormais représenter cela sous forme d'une matrice de confusion :
+
+\begin{python}
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.metrics import confusion_matrix
+
+cm = confusion_matrix(annotateur1, annotateur2)
+classes = sorted(list(set(annotateur1+annotateur2)))
+
+fig, ax = plt.subplots(figsize=(10,10))
+sns.heatmap(cm, annot=True, xticklabels=classes, yticklabels=classes,cmap=plt.cm.Reds )
+plt.ylim([len(classes), 0])
+
+plt.show()
+\end{python}
+  \subsection{Finalisation et évaluation des scores (à finir à la maison et à rendre en Binôme)}
+Vous rendrez un notebook Python qui compilera vos résultats. Tout d'abord, annotez chacun de votre côté l'exemple suivant :
+ "Je me promène dans la campagne, au milieu des champs. J'arrive vers la magnifique ferme de mon voisin, et je remonte le chemin afin d'aller admirer son potager. Cependant, arrivé à la clôture, je me rends compte que la belle ferme le voile."
+
+Calculez les scores $P_o$, $P_e$ et K puis répondez aux questions suivantes:
+\begin{itemize}
+  \item Représentez vos annotations avec une matrice de confusion
+  \item Quelle étiquette présente le meilleur taux d'accord ?
+%  \item Votre propre annotation est-elle fiable ? Celle des autres juges également ?
+  \item Les données sont-elles homogènes ? Y a-t-il des classes sous-/sur-représentées ?
+  \item De quelle façon pourrions-nous améliorer les scores d'accord?
+\end{itemize}
+
+\textcolor{blue}{\textbf{Vous rendrez ceci sur Moodle pour le 08/12/2019}}
+
+\noindent\fcolorbox{red}{lightgray}{
+\begin{minipage}{15cm}
+\subsection*{Approfondissement}
+ Consultez l'article suivant pour confronter vos idées avec celles d'une chercheuse du domaine :
+
+\url{https://www.liberation.fr/societe/2015/05/07/miracles-et-mirages-du-crowdsourcing_1297262}
+
+\end{minipage}
+}

@@ -1,0 +1,126 @@
+TD4 Epistemo – Sécurité et cryptographie
+
+--------------------
+Chiffre de César
+
+Principe : c’est un chiffrement par décalage ; chaque lettre de l’alphabet correspond à une autre lettre, selon un décalage de tout l’alphabet vers la droite ou la gauche.
+
+a.Afin de trouver la clé, il suffit de prendre une lettre en Clair, et de regarder de combien elle est décalée dans la ligne Chiffré. Dans l’exemple ici, le D est décalé de 3 vers la gauche, la clé est donc -3. Si ça avait été décalé de 3 vers la droite, ça aurait été +3.
+
+b. Decodage ?
+DYGFD HVDUP RULWX ULWHV DOXWP QW
+= aveca esarm oritu rites aluta nt
+= ave caesar morituri te salutant
+
+DO, HAM DF WDHVW
+= al exj ac taest
+= ALEX JACTA EST
+
+On comprend qu’il y a une erreur dans la chaine chiffrée. La bonne chaîne chiffrée aurait été :
+do hdm df wdhvw
+= al eaj ac taest
+= alea jacta est
+
+c. Ponctuation inadéquate ? Permet de perdre l’information sur la forme des mots, et ainsi diminuer les chances de parvenir à reconnaître certains mots usuels dans la langue (ce qui nous révélerait la clé à coup sûr si l’on a saisi qu’il s’agissait du Chiffre de César).  Permet donc d’induire en erreur.
+
+d. Clé ?
+Même méthode : on prend une lettre en Clair, et on compte à quelle distance elle est en Chiffré (-2 ou +24)
+
+e. Décodage ?
+YTC AYCQYP
+= AVE CAESAR
+
+Coder le codage
+ Algo :
+  On associe à chaque lettre de l’alphabet un nombre de l’intervalle [1:26]
+  Pour chaque caractère de la chaine, faire :
+	indice_caractère_dechiffré  (indice_caractère_codé + clé) modulo 26
+	caractère_déchiffré  la lettre associée à cet indice déchiffré
+
+Le modulo 26 consiste à ajouter 26 si le résultat de la soustraction est négatif ou nul.
+
+
+--------------------
+Chiffre de Vigenère
+
+Principe : chiffrement polyalphabétique ; une même lettre peut être remplacée par différentes lettres, selon la position de la lettre dans le message. (César est mono-alphabétique)
+
+a. Codage ?
+
+Clair : B O N J O U R
+Clé :    I N F O I N F
+Code : JBSXWHW
+On commence par colonne B, ligne I (pour le codage) on obtient J ...
+
+b, c : problématique des tableaux indicés et associatifs
+
+
+d. Algo et Implantation
+
+ Lettres représentées sur un intervalle de 0 à 25  (A = 0, B = 1, etc.) (liste nommée alphabet)
+ On crée une clé de taille égale à la taille de la chaine à décoder, avec les caractères de la clé qui se répètent (Clé = [I, N, F, O, I, N, etc.])
+
+Pour chaque caractère (d’indice i) de la chaine s, faire :
+indice caractère_chiffré sur liste alphabet = (indice caractere_clair sur alphabet + indice de caractere Clé[i] sur liste alphabet)
+
+NB: on a à dessein oublié de gérer le modulo 26
+
+e. longueur 1 => on a du césar
+
+f. Non, on s'est limité à 26 lettres majuscules
+
+g. Problème de sécurité
+* Attaque bien connue sur les chiffrements mono-alphabétiques = analyse de la fréquence (si on connaît le nombre de symboles de la clé)
+* Méthode pour déterminer la longueur de la clé :
+		- repérer les répétitions de motifs (test de Kasiski)
+		- méthodes stats, dont l’indice de coïncidence
+
+--------------------
+Le Scarabée d’Or (The Gold Bug)
+
+Nouvelle d’Edgar Poe, traduit en français par Baudelaire. Un homme trouve un scarabée d’or qui le mène à la recherche du trésor du cap’tain Kidd. Il découvre un message mystérieux.
+La nouvelle pose des principes de cryptanalyse chers à Poe.
+
+Première étape à réaliser lorsque l’on découvre un message apparemment crypté : déterminer la langue. Une méthode possible consiste à calculer l’indice de coïncidence dans le texte, et de l’apparier à l’indice de coïncidence relevé en moyenne pour chaque langue.
+Principe de l’indice de coïncidence : étude de la probabilité de répétition des lettres dans le message. Une application possible est la comparaison avec l’indice d’une langue donnée pour connaître la langue.
+Dans sa nouvelle, Poe détermine la langue aisément car le parchemin porte l’image d’un chevreau (kid en anglais, et cap’tain Kidd), relation qui n’est possible qu’en anglais.
+
+Poe est parti du principe qu’il s’agissait d’un chiffrement par substitution mono-alphabétique (1 caractère chiffré = 1 lettre déchiffrée).
+
+Analyse fréquentielle : on compte le nombre de fois où un caractère apparaît. En fonction de ce classement par fréquence d’apparition, On compare  ce classement par fréquence d’apparition avec les fréquences des lettres en anglais. Dès qu’on a trouvé quelques lettres, on peut deviner certaines autres lettres, et ainsi retrouver à peu près l’intégralité du texte.  problème si le texte est trop court, ou que des caractères sont sous/sur-représentés.
+
+Repérer des mots : (« attaque par mot probable ») on s’appuie sur la fréquence des mots d’une langue, si tant est que le texte est correct grammaticalement ! Comme le texte chiffré du Scarabée ne contient pas d’espace, on essaie de regrouper les lettres en fonction des mots que cela peut probablement représenter.
+
+Au final, le protagoniste de l’histoire découvre une énigme !
+
+
+
+Chiffre du Livre
+
+a. Principes
+
+Par exemple, rédiger le message « hello » selon le code que vous aurez choisi.
+
+b. La substitution présentée consiste à affecter plusieurs codes à chaque lettre.
+Par exemple : 
+
+1) Construire l’alphabet :
+fréquence de chaque caractère
+si la lettre « a » a pour fréquence 18% dans le texte, on lui attribuera 18 positions possibles
+2) Chiffrer :
+Pour chaque lettre du texte :
+	choisir un chiffre au hasard parmi les chiffres dispo pour ce caractère
+3) Déchiffrer :
+Pour chaque chiffre du texte :
+	Retrouver la lettre correspondant au chiffre
+
+Intérêt : empêcher d’attaquer le message crypté par analyse de fréquences
+
+------------------
+Cryptage à clé publique
+
+a. Limitation clé privées ?
+Besoin de se voir/se contacter pour transmettre la clé
+Risque de perdre la clé
+
+b. Apport : on ne diffuse qu’une partie de la clé (la partie publique) qui a permis de chiffrer le message.

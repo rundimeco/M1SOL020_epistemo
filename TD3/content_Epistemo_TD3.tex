@@ -1,0 +1,120 @@
+
+\newcommand{\numTD}{TD3}
+\newcommand{\themeTD}{Codages Informatiques}
+\input{../entete_TD_epistemoM1}
+
+\hrule
+%%%%%%%%%%%%%%%%%%%%%%%%%EN-TETE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\renewcommand{\contentsname}{Sommaire du TD}
+%\tableofcontents
+
+\noindent\fcolorbox{red}{lightgray}{
+\begin{minipage}{12cm}
+\section*{Objectifs}
+
+\begin{itemize}
+ \item Comprendre les codages binaires, décimaux, et hexadécimaux
+ \item Appréhender le codage des caractères (ASCII et ASCII étendu)
+\end{itemize}
+\end{minipage}
+}
+
+
+
+\section{Codage décimal (base 10)}
+\begin{itemize}
+ \item  Que signifie " base 10 " ?
+ \item  La numération romaine est-elle en base 10 ?
+\end{itemize}
+
+\section{Codage binaire (base 2)}
+
+ Ici chaque élément peut coder 2 valeurs (0 ou 1) là où le système décimal encode 10 valeurs différentes dans chaque élément (0 à 9). Pour la justification de l'utilisation du binaire, allez voir la partie \textit{Why Binary?} dans la partie Aprrofondissement en fin de TD.
+
+\begin{itemize}
+ \item  Que signifie numération binaire positionnelle ?
+\end{itemize}
+\subsection{Du binaire au décimal}
+
+\begin{itemize}
+ \item  Partez de cette définition pour compléter le tableau ci-dessou et convertir en base décimale les nombres exprimés en base 2 : %. Indiquez leur valeur en base décimale :
+\end{itemize}
+
+\input{tables/TD3_Ex2_2}
+
+\subsection{Du décimal au binaire}
+\begin{itemize}
+ \item En utilisant la méthodologie proposée ci-dessous, convertissez en binaire la série de nombres en base 10 qui suit :%xprimez ces nombres en base binaire : 
+\end{itemize}
+
+\textbf{Méthodologie :}
+
+%\begin{table}
+\input{tables/TD3_Ex2_3bis}
+%\end{table}
+
+\textbf{Tableau à compléter :}
+
+\input{tables/TD3_Ex2_3}
+
+ \begin{itemize}
+   \item  Quel est l'entier maximal que l'on puisse coder sur 16 bits ?
+ \end{itemize}
+
+\section{Addition en Binaire}
+
+\subsection{Additions en binaire}
+
+% \begin{itemize}
+%   \item  Additionnez ces nombres à la main en suivant les règles d’addition proposées dans le tableau ci-dessous :
+% \end{itemize}
+\input{tables/TD3_Ex2_4}
+
+\subsection{Conversion et addition}
+
+ \begin{itemize}
+   \item  Convertissez ces nombres en binaire, et additionnez les : $19_{\text{(10)}}$ + $71_{\text{(10)}}$
+ \end{itemize}
+
+\section{Codage hexadécimal (base 16)}
+ \begin{itemize}
+ \item  Quels sont les 16 chiffres du système hexadécimal ?
+ \item  Convertissez $4D5_{(16)}$, et $F48A_{(16)}$ en décimal.
+ \item  Addition en hexadécimal. En vous appuyant sur le tableau \ref{table_hexa}, combien vaut D + C en base 16 ? Exprimez ensuite ce calcul en base 10.
+ \end{itemize}
+
+\input{tables/TD3_hexa}
+
+\section{Codage des caractères (Codage ASCII)}
+
+\begin{figure}
+\caption{Table ASCII (source : \url{http://www.asciitable.com/})\label{tab:ascii}}
+\includegraphics[width=1\textwidth]{../images/asciifull.png}
+\end{figure}
+
+ \begin{itemize}
+ \item  Combien de codes différents existe-t-il dans l'ASCII standard (cf. Tableau \ref{tab:ascii} page \pageref{tab:ascii}?
+ \item  Ce qui signifie qu'ils sont codés sur combien de bits ?
+ \item  Observez la table ci-après. Quel problème peut survenir lorsqu'on écrit en français?
+ \item  Quelle solution a été adoptée par l'ISO pour résoudre ce problème ? Quelle conséquence ?
+ \end{itemize}
+
+\noindent\fcolorbox{red}{lightgray}{
+\begin{minipage}{15cm}
+\subsection*{Approfondissement}
+\begin{itemize}
+  \item Pourquoi choisir le binaire pour les ordinateurs (\textit{Why Binary ?}) ? \url{https://www.youtube.com/watch?v=thrx3SBEpL8}
+  \item Un convertisseur Binaire--Décimal--Hexadecimal :
+
+ \url{http://sebastienguillon.com/test/javascript/convertisseur.html}
+
+
+  \item Un exemple de problème d'encodage (ou \textit{encoding}) :
+\end{itemize}
+
+%\begin{figure}
+\includegraphics[width=.9\textwidth]{../images/TD3_encoding.png}
+%\end{figure}
+
+\end{minipage}
+}

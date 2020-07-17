@@ -1,0 +1,233 @@
+
+\newcommand{\numTD}{TD4}
+\newcommand{\themeTD}{Sécurité et Cryptographie}
+\input{../entete_TD_epistemoM1}
+
+
+\hrule
+%%%%%%%%%%%%%%%%%%%%%%%%%EN-TETE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\renewcommand{\contentsname}{Sommaire du TD}
+%\tableofcontents
+
+\noindent\fcolorbox{red}{lightgray}{
+\begin{minipage}{12cm}
+\section*{Objectifs}
+
+\begin{itemize}
+  \item Comprendre les enjeux du cryptage
+  \item Savoir représenter algorithmiquement une méthode de codage et de décodage
+\end{itemize}
+\end{minipage}
+}
+
+
+\section{Méthodes de cryptage à clé secrète}
+
+\subsection{Chiffrement par décalage : Chiffre de César}
+
+C'est un chiffrement par décalage ; chaque lettre de l’alphabet correspond à une autre lettre, selon un décalage de tout l'alphabet vers la droite ou la gauche.
+
+\begin{table}[h]
+\begin{tiny}
+\input{table_Ex1a}
+\end{tiny}
+\caption{\label{Cesar1}Correspondance entre lettres en clair et lettres chiffrées (chiffrement \ref{Cesar1})}
+\end{table}
+
+\subsubsection{Comprendre}
+\begin{itemize}
+  \item Dans le tableau \ref{Cesar1}, quelle est la clé permettant de déchiffrer le texte ?
+  \item Connaissant la clé, que signifient ces textes ?
+\begin{itemize}
+  \item DYHFD HVDUP RULWX ULWHV DOXWD QW?
+  \item DO, HAM DF WDHVW
+\end{itemize}
+  \item Quelle est l'importance d'une \textbf{ponctuation inadéquate} ?
+  \item Étudiez maintenant le chiffrement \ref{Cesar2} (tableau \ref{Cesar2}), quelle est la clé ?
+\begin{table}[h]
+\begin{tiny}
+\input{table_Ex1b}
+\end{tiny}
+\caption{\label{Cesar2}Correspondance entre lettres en clair et lettres chiffrées (chiffrement \ref{Cesar2})}
+\end{table}
+  \item Que signifie YTC AYCQYP dans ce chiffrement ?
+  \item Connaissant la clé, comment pouvons-nous représenter algorithmiquement le décodage d'un texte ?
+\end{itemize}
+
+\subsubsection{Coder le codage}
+ Nous allons contribuer au codage en \textsc{Python} une fonction permettant de chiffrer et de déchiffrer un texte selon une clé donnée.
+Par commodité on se limitera aux lettres majuscules.
+Utilisez le code ci-dessous:
+\input{code_cesar.py}
+
+\begin{itemize}
+  \item Le code fonctionne-t-il en mettant un clé valant 25? Comment corriger ?
+  \item Comment peut-on créer une fonction de décodage ?
+\end{itemize}
+
+\subsection{Chiffrement par substitution : Chiffre de Vigenère}
+ Il s'agit d'un chiffrement polyalphabétique : une même lettre peut être remplacée par différentes lettres, selon la position de la lettre dans le message. (au contraire, le codage de César est mono-alphabétique).%, le décalage est le même pour toutes les lettres 
+
+\begin{itemize}
+  \item Utilisez le programme \textsc{Python} ci-dessous (téléchargez la resource associée sur Moodle):
+\input{code_vigenere.py.tex}
+  \item  codez "BONJOUR" avec la clé "INFO" puis "SALUT" avec la clé "VRAI"
+  \item Vérifiez le résultat en utilisant la table de Vigenère en annexe (tableau \ref{tab:vigenere} page \pageref{tab:vigenere}),
+  \item Examinez dans un éditeur la ressource \texttt{Epistemo-TD4-vigenere.json} qui associe à chaque lettre, selon chaque clé, un équivalent codé. Comparez la avec le tableau  \ref{tab:vigenere}
+  \item Reconstituez l'algorithme de codage choisi, comment procéder autrement ?
+\item Que se passe-t-il si on choisit une clé de longueur 1 ?
+\item Avec le code fourni, peut-on choisir n'importe quel message à coder ?
+  \item Quel est le problème de sécurité connu sur ce type de chiffrement ?
+\end{itemize}
+
+
+\subsection{Chiffrement par substitution : Le Scarabée d'or}
+
+\noindent\fcolorbox{black}{white}{
+\begin{minipage}{9cm}
+53‡‡†305))6*;4826)4‡.)4‡);806*;48‡8
+
+¶60))85;1‡(;:‡*8†83(88)5*†;46(;88*96
+
+*?;8)*‡(;485);5*†2:*‡(;4956*2(5*—4)8
+
+¶8*;4069285);)6†8)4‡‡;1(‡9;48081;8:8‡
+
+1;48†85;4)485†528806*81(‡9;48;(88;4
+
+(‡?34;48)4‡;161;:188;‡?;
+\end{minipage}
+}
+
+\subsubsection{Méthode de déchiffrage}
+
+\begin{itemize}
+  \item Déterminer la langue
+  \item Analyse des fréquences des caractères de la langue en question
+  \item Remplacer les caractères codés par des caractères de fréquence comparable
+  \item Repérer des mots
+\end{itemize}
+
+\subsubsection{Réalisation}
+
+Première approche ("5", "3", "‡", "†"\dots dans le code sont aussi fréquents que "a", "g", "o", "d"\dots en langue anglaise) :
+
+\vspace{0.2cm}
+
+\noindent\fcolorbox{black}{white}{
+\begin{minipage}{9cm}
+agoodg0a))inthe2i)ho.)ho)te0inthede
+
+¶i0))eat1ort:onedegree)andthirteen9i
+
+nute)northea)tand2:north9ain2ran-h)e
+
+¶enth0i92ea)t)ide)hoot1ro9the0e1te:eo
+
+1thedeath)heada2ee0ine1ro9thetreeth
+
+roughthe)hot1i1t:1eetout 
+
+\end{minipage}
+}
+
+\vspace{0.2cm}
+Le texte après décodage complet (et ajout des espaces):
+
+\vspace{0.2cm}
+
+\noindent\fcolorbox{black}{white}{
+\begin{minipage}{9cm}
+A good glass in the bishop's hostel in the de
+
+vil's seat forty-one degrees and thirteen mi
+
+nutes north east and by north main branch se
+
+venth limb east side shoot from the left eye o
+
+f the death's head a bee line from the tree th
+
+rough the shot fifty feet out.
+\end{minipage}
+}
+
+
+%\section{Le cryptage XOR}
+
+%\begin{itemize}
+%  \item Table de vérité XOR
+%  \item Prenons une chaîne de caractères, on connait le code ASCII pour chaque caractère (voir annexe). La clé est le code de la lettre R, quelle est alors la signification de :
+%  \item 001 1010 – 011 0111 – 011 1110 – 011 1110 – 011 1101
+%\end{itemize}
+
+\subsection{Le système du dictionnaire (chiffre du livre)}
+
+\noindent\fcolorbox{black}{white}{
+\begin{minipage}{16cm}
+~ 1 Et c'était bien exact : elle ne mesurait plus que vingt-cinq centimètres.
+
+~ 2 Son visage s'éclaira a l'idee qu'elle avait maintenant exactement la taille
+
+~ 3 qu'il fallait pour franchir la petite porte et pénétrer dans l'adorable jardin.
+
+~ 4 Néanmoins elle attendit d'abord quelques minutes pour voir si elle allait
+
+~ 5 diminuer encore : elle se sentait un peu inquiète a ce sujet: "car, voyez-
+
+~ 6 vous, pensait Alice, a la fin des fins je pourrais bien disparaître tout a fait,
+
+~ 7 comme une bougie. En ce cas, je me demande a quoi je ressemblerais." Et 
+
+~ 8 elle essaya d'imaginer a quoi ressemble la flamme d'une bougie une fois 
+
+~ 9 que la bougie est éteinte, car elle n'arrivait pas a se rappeler avoir jamais
+
+10 vu chose pareille.
+
+\textit{Lewis Carroll (1865), Alice au pays des Merveilles.}
+ \textit{Edition du groupe "Ebooks libres et gratuits". Page 12}
+\end{minipage}
+}
+
+\begin{itemize}
+  \item D'après le texte ci-dessus, construisez un message crypté à partir d'un code "numéro de ligne-numéro de caractère", où chaque symbole du code sera unique.
+  \item Améliorez le cryptage avec une substitution homophonique, rédigez l'algorithme.
+\end{itemize}
+
+%\section{Le chiffrement DES (Data Encryption Standard)}
+%
+%\begin{itemize}
+%  \item Si l'algorithme est public, sur quoi repose la sécurité de ce chiffrement ?
+%\end{itemize}
+
+\section{Cryptage à clé publique}
+
+\begin{itemize}
+  \item Limitation(s) des systèmes de chiffrement à clé privée ?
+  \item Quel est alors l'apport de l'utilisation d'un système à clé publique ? (ex. RSA)
+\end{itemize}
+
+
+
+\noindent\fcolorbox{red}{lightgray}{
+\begin{minipage}{15cm}
+\subsection*{Approfondissement}
+
+\begin{itemize}
+  \item Chiffrement de César : \url{https://www.youtube.com/watch?v=g8RmT-CwTMo}
+  \item Chiffrement de Vigenère : \url{https://www.youtube.com/watch?v=rUlqxHGKJ68}
+  \item La machine Enigma : \url{https://www.youtube.com/watch?v=oGDPtm8pYPM}
+\end{itemize}
+
+%\begin{figure}
+%\end{figure}
+
+\end{minipage}
+}
+\begin{table}[h]
+\begin{tiny}
+\input{table_vigenere}
+\caption{Table de Vigenère \label{tab:vigenere}, en colonne la lettre en clair, en ligne la clé, à l'intersection la lettre codée}
+\end{tiny}
+\end{table}

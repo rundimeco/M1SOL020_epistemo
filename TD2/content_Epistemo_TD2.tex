@@ -1,0 +1,108 @@
+
+\newcommand{\numTD}{TD2}
+\newcommand{\themeTD}{Chatbots et Test de Turing}
+\input{../entete_TD_epistemoM1}
+
+\hrule
+%%%%%%%%%%%%%%%%%%%%%%%%%EN-TETE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\renewcommand{\contentsname}{Sommaire du TD}
+%\tableofcontents
+
+\noindent\fcolorbox{red}{lightgray}{
+\begin{minipage}{12cm}
+\section*{Objectifs}
+
+\begin{itemize}
+ \item Manipuler un agent conversationnel \textit{chatbots} en portant un regard critique
+ \item Etudier les limites d'un \textit{chatbot} dans la communication homme-machine
+ \item S'interroger sur la valeur du Test de Turing
+\end{itemize}
+\end{minipage}
+}
+
+\section{Introduction}
+
+\begin{itemize}
+ \item Quels sont les éléments de communication nécessaires à la réalisation d'une discussion efficace entre deux humains ?
+ \item Parmi ces éléments, lesquels posent le plus de problèmes si on souhaite parvenir à discuter avec une machine ?
+\end{itemize}
+
+\section{Les agents conversationnels (\textit{chatbots})}
+
+\subsection{ELIZA}
+ELIZA : \url{http://www.manifestation.com/neurotoys/eliza.php3}
+\begin{itemize}
+  \item Quels semblent être les mécanismes utilisés par le système pour mener à bien la discussion ?
+  \item Étude d'article : les mécanismes réels du programme ELIZA. Correspondent-ils à vos intuitions ?
+Weizenbaum, J. 1966. ELIZA - A Computer Program For the Study of Natural Language Communication Between Man and Machine. Commun. ACM 9, 1 (January 1966), 36-45.
+  \end{itemize}
+
+\subsection{CHATO}
+
+CHATO : \url{https://www.botlibre.com/livechat?id=22655}
+
+ Mêmes questions que dans l'exercice précédent : étudiez les mécanismes de ce chatbot (attention il y a souvent un temps d'initialisation).
+
+
+\section{Le test de Turing}
+
+\subsection{EUGENE GOOSTMAN}
+
+Eugene Goostman est un chatbot qui a fait l'actualité il y a quelques années. En effet, il a été décrit comme ayant passé le Test de Turing. 
+
+\begin{itemize}
+  \item Dans les articles ci-après, lisez uniquement les discussions que les journalistes ont effectuées avec le bot. Repérez les mécanismes utilisés par le \textit{chatbot} :
+  \begin{itemize}
+    \item "My Conversation with 'Eugene Goostman' the Chatbot that's All Over the News for Allegedly Passing the Turing Test", Article rédigé par Scott Aaronson, le 9 juin 2014,~\url{http://www.scottaaronson.com/blog/?p=1858}
+    \item "Interview with Eugene Goostman, the fake kid who passed the Turing Test", Article rédigé par Doug Aamoth, 9 juin 2014, ~\url{http://time.com/2847900/eugene-goostman-turing-test}
+  \end{itemize}
+  \item Au vu des exemples de discussions vus dans les deux articles précédents, rejoignez vous le point de vue de ce journaliste francophone :
+  \begin{itemize}
+    \item "J'ai discuté avec Eugene Goostman, l'ordinateur intelligent", Par Mathieu Dehlinger, le 9 juin 2014, ~\url{http://www.francetvinfo.fr/sciences/high-tech/j-ai-discute-avec-eugene-goostman-l-ordinateur-intelligent_618181.html}
+  \end{itemize}
+  \item Lisez cette critique réalisée pour un magazine français :
+  \begin{itemize}
+    \item "Buzz : non, Eugene Goostman n'a pas passé le test de Turing\dots", Rédigé par Laurent Sacco, le 10 juin 2014, ~\url{http://www.futura-sciences.com/magazines/high-tech/infos/actu/d/informatique-buzz-non-eugene-goostman-na-pas-passe-test-turing-54027}
+  \end{itemize}
+  \item Selon vous, pourquoi est-ce que la durée de passation du Test du Turing est déterminante pour sa réussite (ou son échec) ?
+  \item Au fil de vos lectures, avez-vous repéré quelle était l'importance du choix qu'ont fait les développeurs pour créer l'avatar de ce chatbot ?
+\end{itemize}
+
+
+\subsection{CORNELL CREATIVE MACHINE LAB : AI vs. AI}
+
+
+  \begin{itemize}
+  \item Découvrez tout d'abord la vidéo : \url{https://www.youtube.com/watch?v=WnzlbyTZsQY}
+ \item Identifiez-vous les moments où la machine semble juste réagir à des mots-clés ?
+ \item Pourquoi ces changements de sujet soudains ?
+ \item A votre avis, que vient faire la licorne ("unicorn") dans la discussion ?
+ \item Lisez la brève explication technique décrite dans l'article sous la vidéo.
+ \item S'agit-il réellement d'une discussion orale entre les deux chatbots ?
+\end{itemize}
+
+\section{Conclusion}
+
+  \begin{itemize}
+ \item D'après les systèmes étudiés précédemment, quels sont les mécanismes et artifices utilisés pour augmenter la crédibilité d'un chatbot ?
+ \item Selon vous, que manque-t-il à de tels systèmes pour paraître plus "humains" ?
+
+  \end{itemize}
+\noindent\fcolorbox{red}{lightgray}{
+\begin{minipage}{12cm}
+\subsection*{A parcourir}
+  \begin{itemize}
+ \item Article d'Alan Turing à propos du "Test de Turing" : analyse critique des objections formulées.
+A. M. Turing (1950) Computing Machinery and Intelligence. Mind 49: 433-460. \url{http://cogprints.org/499/1/turing.HTML}
+  \item Quelques articles pointant la controverse autour du Test de Turing: 
+  
+  \begin{itemize}
+  \item Searle, John. R. (1980) Minds, brains, and programs. Behavioral and Brain Sciences 3 (3): 417-457
+\url{http://cogprints.org/7150/1/10.1.1.83.5248.pdf}
+  \item Sylvain Auroux. Les enjeux de la linguistique de terrain. In: Langages 129, 1998. pp. 89-96. \url{http://www.persee.fr/web/revues/home/prescript/article/lgge_0458-726x_1998_num_32_129_2148}
+  \item Les mécanismes des chatbots ALICE et SUZETTE : Wilcox, B. 2010. Beyond Façade: Pattern Matching for Natural Language Applications. \url{www.gamasutra.com/view/feature/134675/beyond_fa\%C3\%A7ade_pattern_matching_.php?print=1}
+  \end{itemize}
+  \end{itemize}
+
+\end{minipage}
+}

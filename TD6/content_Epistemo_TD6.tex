@@ -1,0 +1,308 @@
+
+\newcommand{\numTD}{TD6}
+\newcommand{\themeTD}{Logique}
+\input{../entete_TD_epistemoM1}
+
+
+\hrule
+%%%%%%%%%%%%%%%%%%%%%%%%%EN-TETE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\renewcommand{\contentsname}{Sommaire du TD}
+%\tableofcontents
+
+\noindent\fcolorbox{red}{lightgray}{
+\begin{minipage}{12cm}
+\section*{Objectifs}
+
+\begin{itemize}
+  \item Savoir exploiter les principes de logique dans les structures itératives
+  \item Savoir analyser une expression logique
+\end{itemize}
+\end{minipage}
+}
+
+\section{Itérations}
+
+\textcolor{blue}{\bf{Autant que possible, n'exécutez pas immédiatement le code \textsc{Python}} de cet exercice, il s'agit de réfléchir "sur papier" avant de lancer}. Le notebook avec le code est sur le Moodle.
+
+\begin{enumerate}
+  \item A quel moment une boucle s'interrompt-elle ?
+  \item Dans l’exemple suivant, à partir de quand la condition d'entrée devient fausse ?
+
+\begin{python}
+i = 2
+while i<=8:
+  print("coucou")
+  print(i)
+  i+=1
+print("Fin")
+\end{python}
+
+  \item La finalité de l'exemple ci-dessous est-elle similaire à l'exemple précédent ?
+\begin{python}
+for i in range(2, 9):
+  print("coucou")
+  print(i)
+  i+=1
+print("Fin")
+\end{python}
+  \item Analysez les différentes propositions de l'exemple ci-dessous et indiquez quelle est la condition de sortie de boucle.
+\begin{python}
+i = 5
+encore = True
+while encore == True:
+  print("coucou")
+  i+=1
+  if i>10:
+    encore = False
+print("Fin")
+\end{python}
+
+  \item Étudiez la proposition logique utilisée dans cet algorithme. Que va faire le code ?
+
+\begin{python}
+if True:
+  print("c'est vrai")
+\end{python}
+
+  \item Et dans ce cas ?
+\begin{python}
+if False:
+  print("c'est faux")
+\end{python}
+
+  \item Que va faire ce code ?
+\begin{python}
+while True:
+  print("c'est vrai")
+\end{python}
+
+  \item L'algorithme ci-dessous permet-il d'écrire "bonjour" ?
+\begin{python}
+A = True
+B = False
+if A and B:
+  print("bonjour")
+\end{python}
+  \item Dans l'exemple ci-dessous, pour quelle valeur de i pourrons-nous sortir de la boucle ?
+\begin{python}
+A = True
+B = False
+i = 0
+while A or B:
+  print("bonjour")
+  if i>10 and i<20:
+    A = False
+  i+=1 
+\end{python}
+
+  \item Étudiez le comportement de l'algorithme suivant. Peut-on rentrer dans la boucle ? Quand sortirons nous de la boucle ?
+\begin{python}
+A = True
+B = True
+i = 0
+while A or B:
+  print("bonjour")
+  A = False
+\end{python}
+
+  \item Quelle différence avec celui-ci (NB: \^{} est le ou exclusif ou "XOR")?
+\begin{python}
+A = True
+B = True
+i = 0
+while A ^ B:
+  print("bonjour")
+  A = False
+\end{python}
+
+\end{enumerate}
+
+%\section{Analyse de propositions et tables de vérité}
+
+  \section{Apprendre les opérateurs, compléter des tables de vérité}
+
+\subsection{Négation logique $\neg$}
+
+
+\begin{tabular}{c|c}
+
+A	&$\neg$ A\\
+\hline
+VRAI	&\\
+\hline
+FAUX	&\\
+\end{tabular}
+
+\subsection{ET logique ($\wedge $),  OU logique ($\vee $)}
+
+\begin{tabular}{c|c|c||c|c|c}
+%  \multicolumn{3}{c}{ET logique ($\wedge $)}
+%& \multicolumn{3}{c}{OU logique ($\vee $)} \\
+%\hline
+A	&B	&A$\wedge$B&A	&B	&A $\vee$ B\\
+\hline
+\hline
+VRAI	&VRAI	&	&VRAI	&VRAI	&\\
+\hline
+VRAI	&FAUX	&	&VRAI	&FAUX	&\\
+\hline
+FAUX	&VRAI	&	&FAUX	&VRAI	&\\
+\hline
+FAUX	&FAUX	&	&FAUX	&FAUX	&\\
+\end{tabular}
+
+\subsection{XOR (OU-exclusif, $\oplus$), Implication ($\Rightarrow$)}
+
+\begin{tabular}{c|c|c||c|c|c}
+%  \multicolumn{3}{c}{ET logique ($\wedge $)}
+%& \multicolumn{3}{c}{OU logique ($\vee $)} \\
+%\hline
+A	&B	&A$\oplus$B&A	&B	&A $\Rightarrow$ B\\
+\hline
+\hline
+VRAI	&VRAI	&	&VRAI	&VRAI	&\\
+\hline
+VRAI	&FAUX	&	&VRAI	&FAUX	&\\
+\hline
+FAUX	&VRAI	&	&FAUX	&VRAI	&\\
+\hline
+FAUX	&FAUX	&	&FAUX	&FAUX	&\\
+\end{tabular}
+
+
+  \subsection{Compléter des tables de vérité complexes}
+% ET \wedge$ 		OU $\vee$ B
+% OU-exclusif, $\oplus$ Implication ($\Rightarrow$)
+
+\begin{table}[h]
+\begin{tabular}{c|c|c}
+A	&B	& $\neg$ A $\vee$ $\neg$ B\\ 
+\hline
+\hline
+VRAI	&VRAI	&	\\
+\hline
+VRAI	&FAUX	&	\\
+\hline
+FAUX	&VRAI	&	\\
+\hline
+FAUX	&FAUX	&	\\
+\end{tabular}
+%\caption{Double négation}
+\end{table}
+
+\begin{table}[h]
+\begin{tabular}{c|c|c|c|c}
+A	&B	& A $\wedge \neg$ B&B $\vee \neg$ A
+		&(A $\wedge \neg$ B) $\vee$ (B $\vee \neg$A)\\
+\hline
+\hline
+VRAI	&VRAI	&	&&\\
+\hline
+VRAI	&FAUX	&	&&\\
+\hline
+FAUX	&VRAI	&	&&\\
+\hline
+FAUX	&FAUX	&	&&\\
+\end{tabular}
+%\caption{Imbrication}
+\end{table}
+
+\begin{table}[h]
+\begin{tabular}{c|c|c|c|c|c}
+A	&B	&C	&(A$\wedge$B)	&$\neg$C & (A$\wedge$B) $\vee$ $\neg$C\\
+\hline
+\hline
+VRAI	&$\neg$A&$\neg$B&		&	 &\\
+\hline
+VRAI	&FAUX	&$\neg$A&		&	 &\\
+\hline
+FAUX	&VRAI	&$\neg$B&		&	 &\\
+\hline
+FAUX	&FAUX	&$\neg$B&		&	 &\\
+\end{tabular}
+%\caption{Dépendances}
+\end{table}
+
+\end{document}
+
+%TODO: réfléchir à rendre ce problème utilisable
+  \item Considérez ce problème algorithmique :
+Soient :
+la variable Chaîne (une chaîne de caractères),
+une liste nommée Liste contenant des chaînes de caractères,
+un booléen nommé Bool
+Vous désirez réaliser un algorithme qui n’exécutera PAS un code UNIQUEMENT dans ce cas :
+Si Bool est faux, et que Chaîne fait partie de Liste.
+Dans tous les autres cas, le code devra s’exécuter.
+Ne rédigez pas l’algorithme, mais seulement la table de vérité associée. A quelle table de vérité vue ci-dessus cela correspond-il ?
+  \item Analysez les propositions ci-dessous. Pour chaque valeur de A, B et C telles qu’indiquées, indiquez si la proposition sera vraie ou fausse.
+A
+B
+(A ∧ ¬ B) ∨ (B ∧ ¬ A)
+VRAI
+VRAI
+
+FAUX
+VRAI
+
+VRAI
+FAUX
+
+FAUX
+FAUX
+
+Etudiez le tableau ci-dessus : à quelle table de vérité cela vous fait penser ?
+
+A
+B
+¬A ∨ ¬B
+VRAI
+VRAI
+
+FAUX
+VRAI
+
+VRAI
+FAUX
+
+FAUX
+FAUX
+
+
+A
+B
+(A ⇒ B) ∧ ¬B
+VRAI
+VRAI
+
+FAUX
+VRAI
+
+VRAI
+FAUX
+
+FAUX
+FAUX
+
+
+A
+B
+C
+(A ∧ B) ∨ ¬C
+VRAI
+¬A
+¬B
+
+FAUX
+VRAI
+¬A
+
+VRAI
+FAUX
+¬B
+
+FAUX
+FAUX
+¬B
+
+

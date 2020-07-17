@@ -1,0 +1,88 @@
+
+\newcommand{\numTD}{TD8}
+\newcommand{\themeTD}{Evaluation et mesures de performance}
+\input{../entete_TD_epistemoM1}
+
+\hrule
+%%%%%%%%%%%%%%%%%%%%%%%%%EN-TETE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\renewcommand{\contentsname}{Sommaire du TD}
+%\tableofcontents
+
+\noindent\fcolorbox{red}{lightgray}{
+\begin{minipage}{12cm}
+\section*{Objectifs}
+
+\begin{itemize}
+  \item Appliquer les notions de Vrai/Faux Positif, Vrai/Faux Négatif
+  \item Calculer et comprendre Rappel, Précision et F-Mesure
+\end{itemize}
+\end{minipage}
+}
+
+\section{Parseur Automatique : tester des règles}
+
+\begin{itemize}
+  \item Etablissez une liste de règles à appliquer pour faire la tokenisation du français(moins de 10 règles au total). Une fois votre liste établie, ne la modifiez plus.
+  \item Comptez (à la main) le nombre de mots présents dans le texte ci-dessous
+
+\noindent\fcolorbox{black}{ProcessBlue}{
+\begin{minipage}{16cm}
+Les membres permanents du Conseil de sécurité ne sont pas parvenus mercredi 28/08 à s'accorder sur une résolution britannique justifiant une action armée en Syrie, Londres assurant qu'elle n'aurait pas lieu avant que les résultats de l'enquête de l'O.N.U. soient connus. La ligne de fracture entre ces cinq pays – Chine et Russie d'un côté, France, Royaume-Uni et Etats-Unis de l'autre – reflète fidèlement les positions de chacun sur le conflit qui a fait plus de 100 000 morts et poussé des millions de Syriens à la fuite depuis mars 2011. "Rendez-vous compte", insiste le Premier Ministre, "que ce conflit dure depuis des années".
+
+\footnotesize{\href{http://www.lemonde.fr/proche-orient/article/2013/08/28/syrie-londres-presentera-un-projet-de-resolution-aujourd-hui-a-l-onu_3467568_3218.html}{http://www.lemonde.fr/proche-orient/article/2013/08/28/syrie-londres-presentera-un-projet-de}}
+\end{minipage}
+}
+  \item Listez les règles que vous avez appliquées pour faire votre découpage manuel : gestion des " l’ ", " s’ ", " n’ ", gestion des mots composés, etc.
+  \item Maintenant, scindez le texte selon les règles que vous avez listées à la question a). En les suivant à la lettre ! Combien de mots obtiendriez-vous avec un tel système ?
+  \item Si l'on doit évaluer la performance de vos règles, comment définir les Faux Positifs et les Faux Négatifs pour cette tâche ?
+\end{itemize}
+\newpage
+\section{Mesures de performance}
+
+\subsection{Les mesures à connaître}
+
+\noindent\fcolorbox{red}{lightgray}{
+\begin{minipage}{12cm}
+\begin{itemize}
+  \item $Rappel = \frac{\text{Nombre d'éléments correctement classés (Vrais Positifs)}}{\text{Nombre d'éléments à classer (Vrais Positifs + Faux Négatifs)}}$
+  \item $Precision = \frac{\text{Nombre d'éléments correctement classés (Vrais Positifs)}}{\text{Nombre d'éléments classés (Vrais Positifs + Faux Positifs)}}$
+  \item Pour agréger (fusionner) les deux mesures en une seule:
+  \begin{itemize}
+  \item  $F_1Mesure = \frac{2*Precision*Rappel}{Precision+Rappel}$
+  \end{itemize}
+  \item Le paramètre $\beta$ permet de donner plus d'importance au rappel ($\beta<1$) ou à la précision ($\beta>1$)
+  \begin{itemize}
+    \item $F_{\beta}Mesure = \frac{(1+\beta)*Precision*Rappel}{\beta*Precision+Rappel}$
+  \end{itemize}
+\end{itemize}
+\end{minipage}
+}
+
+\subsection{De la matrice de confusion à l'évaluation proprement dite}
+
+NB: vous pouvez réaliser ces exercices à la main ou en \textsc{Python} en exploitant le \textsc{Notebook} en ligne.
+\begin{table}[h]
+  \input{matrice1}
+  \caption{\label{tab1} Matrice de confusion 1}
+\end{table}
+\begin{itemize}
+  \item Calculez le rappel, la précision et la F-mesure avec les résultats obtenus dans l’exercice précédent.
+\item Les données du tableau \ref{tab1} présentent la matrice de confusion d’un classifieur pour un jeu de données comprenant des instances des classes A, B, C, D et E. Analysez la matrice : quelle est la classe la mieux reconnue ? La moins bien reconnue ?
+\item Remplissez le tableau \ref{tab2}
+\end{itemize}
+
+\begin{table}
+\input{tab1}
+\caption{\label{tab2} Tableau récapitulatif des scores issus des données du tableau \ref{tab1}}
+\end{table}
+
+\subsection{Performance moyenne et moyenne des performances}
+\begin{itemize}
+  \item Calculez pour la matrice du tableau \ref{matrice2} le pourcentage d’instances correctement classées, et la moyenne des rappels.
+  \item Pour la matrice ci-dessus, comment expliquez-vous qu’en moyenne, les rappels soient bons, alors que le pourcentage d’instances correctement classées est très mauvais ?
+\end{itemize}
+
+\begin{table}
+  \input{matrice2}
+  \caption{\label{matrice2} Matrice de confusion 2}
+\end{table}

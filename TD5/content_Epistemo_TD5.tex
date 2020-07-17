@@ -1,0 +1,125 @@
+
+\newcommand{\numTD}{TD5}
+\newcommand{\themeTD}{Complexité}
+\input{../entete_TD_epistemoM1}
+
+\hrule
+%%%%%%%%%%%%%%%%%%%%%%%%%EN-TETE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\renewcommand{\contentsname}{Sommaire du TD}
+%\tableofcontents
+
+\noindent\fcolorbox{red}{lightgray}{
+\begin{minipage}{12cm}
+\section*{Objectifs}
+
+\begin{itemize}
+  \item Comprendre la notion de complexité
+  \item En déduire l'importance de l'algorithme
+  \item Parcourir un tableau de façon efficace
+\end{itemize}
+\end{minipage}
+}
+
+\section{Itérations}
+
+\begin{itemize}
+  \item  Rédiger l'algorithme (la séquence d'instructions) d'une boucle de 1 à 100.  A chaque pas de la boucle, une variable n prend la valeur du compteur. En sortie de boucle, on affiche n.
+  \item  Réaliser le même algorithme pour une boucle de 1 à 100*1000
+  \item  Codez ces deux algorithmes en \textsc{Python}
+  \item  Mesurez la différence dans le temps d'exécution entre ces deux scripts : utilisez la méthode \texttt{clock} de la librairie \texttt{time} en stockant la valeur de \texttt{time.clock()} avant la boucle et en le comparant à sa valeur après la boucle.
+  \item  Quelle est la complexité de l'algorithme (unité: nombre d'itérations) ?
+\end{itemize}
+
+\section{Parcours de tableau}
+
+\begin{itemize}
+  \item  Ecrivez un algorithme de création d'un tableau de 4 par 4. Chaque cellule contient une lettre, et chaque colonne représente l'alphabet (on s'arrête ici au bout de la 4ème lettre puisqu'il s'agit d'un tableau de 4 par 4).
+
+\begin{tabular}{c|c|c|c}
+A&A&A&A\\
+\hline
+B&B&B&B\\
+\hline
+C&C&C&C\\
+\hline
+D&D&D&D\\
+\end{tabular}
+
+  \item  Ecrivez un algorithme de parcours du tableau pour compter toutes les occurrences des lettres "A" et "C". Cet algorithme ne doit parcourir qu'une seule fois le tableau.
+  \item  Rédigez le même algorithme, sauf que vous parcourrez le tableau une fois pour compter la présence de "A", et une seconde fois pour compter la présence des "C".
+  \item  Quelle est la complexité de chacun des deux algorithmes (unité: nombre de passage dans la boucle) ?
+  \item  Remarquez les temps d'exécution pour le(s) parcours du tableau. 
+  \item  Si nous avions, au lieu d'un tableau 4 par 4, un tableau de 1000 par 2000, quelle serait la complexité des deux parcours ?
+\end{itemize}
+
+\section{Analyses de complexité}
+
+ Quelle est la différence de complexité entre ces deux algorithmes qui vérifient la présence d'un entier dans un tableau (unité: nombre de passages dans la boucle tantque) ?
+
+\vspace{0.5cm}
+
+\textbf{Algorithme 1}
+\vspace{-0.3cm}
+\begin{verbatim}
+
+e : entier; T: tableau [1…n] d'entiers
+i <- 1; trouve <- FAUX
+tantque trouve = FAUX et i <= n faire
+    si e = T[i] alors
+        trouve <- VRAI
+    i <- i + 1
+\end{verbatim}
+
+
+\textbf{Algorithme 2}
+\vspace{-0.3cm}
+
+\begin{verbatim}
+e : entier; T: tableau [1…n] d'entiers
+i <- 1; trouve <- FAUX
+tantque i <= n faire
+    si e=T[i] alors
+        trouve <- VRAI
+        sortir de la boucle tantque
+    i <- i + 1
+\end{verbatim}
+\vspace{-0.5cm}
+\begin{itemize}
+  \item  Indiquez, pour l'algorithme 1 ci-dessus, la complexité dans le meilleur des cas, dans le pire des cas, et la complexité moyenne.
+  \item  Quelle est la complexité de l'algorithme ci-dessous ? (unité: passage dans la boucle)
+
+\begin{python}
+i <- 0; n <- 4; v <- 1;
+tantque i <= n faire
+    v <- v x 2
+    afficher v
+\end{python}
+  \item  Quelle est la complexité de l'algorithme ci-dessous ? (nombre d'opérations effectuées)
+\begin{python}
+i <- 50;
+y <- 4.0 / 3.0 * 4 * i
+afficher y
+\end{python}
+
+  \item  Peut-on rendre plus efficace l'algorithme ci-dessous ?
+\begin{verbatim}
+fonction affichtab(tableau: liste d\'elements)
+    i <- 0; n <- taille max de tableau
+    tantque i <= n faire:
+        afficher valeur de tableau à l'indice i
+        i <- i + 1
+s = "tableau d'entiers"
+t: tableau d'entiers[1...10]
+affiche "Voici le contenu de " et affiche s
+appel a la fonction affichtab(t)
+s = "chaîne de caractères"
+t: tableau de caractères["a"..."z"]
+affiche "Voici le contenu de " et affiche s
+appel a la fonction affichtab(t)
+\end{verbatim}
+\end{itemize}
+%f. Proposez un algorithme efficace pour parcourir le tableau ci-dessous. Le parcours doit s'arrêter lorsqu'on a trouvé la combinaison [3][4][2].
+%\begin{python}
+%t[entiers de 0 à 4][entiers de 0 à 7][entiers de 0 à 2]
+
+%\end{python}

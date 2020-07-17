@@ -1,0 +1,84 @@
+Exercice 1
+a. L’alphabet est « a » et « b ».
+b. Les états sont 0 (initial), 1, 2, 3 et 4 (final).
+c. Le mot « abba ».
+d. Pas d’autre mot car chaque état ne propose qu’une seule et unique transition possible.
+
+Exercice 2
+a. Pas le même mot, car les règles de transition sont différentes.
+b. On peut boucler sur l’état 2 en générant le caractère « b » à chaque fois, donc produire « abb*a ».
+c. Impossible à lister, car infini.
+
+Exercice 3
+a. 1 et 2. Le 3 n’a pas de ponctuation, le sujet du 3 est composé d’un seul pronom, et le 5 comporte pronom + dét+nom.
+
+Exercice 4
+a. Obligé de le faire en une seule ligne (pour empêcher la boucle sur « ss »).
+b. 8 états et alphabet 7 = {« a », « m », « s », « e », « r »}
+c. Il faut faire 2 états finaux possibles : le 4 et le 7.
+
+Exercice 5
+a. 4 états, alphabet {a, b, mot vide}. Etat initial est 0, et le final est 3.
+b. Exemple de trois mots rejetés : #, ba, a#
+c. Exemple de trois mots validés par l’automate : aba, ab#, aaaabaaaaaaaa
+
+Exercice 6
+a. &    b.
+
+a
+b
+0
+1
+
+1
+
+2
+2
+3
+2
+* 3
+
+
+
+Exercice 7
+a. Etats 0 à 3. Etats initiaux 0 et 2, états finaux 1 et 3.
+b. abcd
+c. 
+Mot
+Parcours?
+Mot
+Parcours?
+a
+0-1
+cc
+0-1-3
+acd
+0-1-2-3
+d
+2-3
+aac
+/
+bcd
+/
+acdaa
+0-1-2-3-3
+dd
+/
+ac
+0-1-3
+b
+/
+abbbb
+0-1-1-1-1
+ccaaaaa
+0-1-3-3-3-3-3-3
+
+Exercice 8
+ 
+Exercice 9
+Une application possible d'un AEF : la gestion d'un flux de navigation. Cette représentation est importante lors de la phase de conception d'une application.
+Les états sont des commandes informatiques (afficher tel écran, afficher tel message, effectuer telle action).
+Les transitions sont les actions de l'utilisateur (clic souris, message entré au clavier), qui viennent choisir la direction à prendre dans l'automate.
+
+Ouverture
+A regarder chez soi.
