@@ -31,10 +31,10 @@ C'est un chiffrement par décalage ; chaque lettre de l’alphabet correspond �
 \begin{tiny}
 \input{table_Ex1a}
 \end{tiny}
-\caption{\label{Cesar1}Correspondance entre lettres en clair et lettres chiffrées (chiffrement \ref{Cesar1})}
+\caption{\label{Cesar1}Correspondance entre lettres en clair et lettres chiffrées (chiffrement 1)}%\ref{Cesar1})}
 \end{table}
 
-\subsubsection{Comprendre}
+\subsection{Comprendre}
 \begin{itemize}
   \item Dans le tableau \ref{Cesar1}, quelle est la clé permettant de déchiffrer le texte ?
   \item Connaissant la clé, que signifient ces textes ?
@@ -48,13 +48,13 @@ C'est un chiffrement par décalage ; chaque lettre de l’alphabet correspond �
 \begin{tiny}
 \input{table_Ex1b}
 \end{tiny}
-\caption{\label{Cesar2}Correspondance entre lettres en clair et lettres chiffrées (chiffrement \ref{Cesar2})}
+\caption{\label{Cesar2}Correspondance entre lettres en clair et lettres chiffrées (chiffrement 2)} %\ref{Cesar2})}
 \end{table}
   \item Que signifie YTC AYCQYP dans ce chiffrement ?
   \item Connaissant la clé, comment pouvons-nous représenter algorithmiquement le décodage d'un texte ?
 \end{itemize}
 
-\subsubsection{Coder le codage}
+\subsection{Coder le codage}
  Nous allons contribuer au codage en \textsc{Python} une fonction permettant de chiffrer et de déchiffrer un texte selon une clé donnée.
 Par commodité on se limitera aux lettres majuscules.
 Utilisez le code ci-dessous:
@@ -191,8 +191,8 @@ rough the shot fifty feet out.
 }
 
 \begin{itemize}
-  \item D'après le texte ci-dessus, construisez un message crypté à partir d'un code "numéro de ligne-numéro de caractère", où chaque symbole du code sera unique.
-  \item Améliorez le cryptage avec une substitution homophonique, rédigez l'algorithme.
+  \item D'après le texte ci-dessus, construisez une version cryptée du message "je mange le lapin" à partir d'un code "numéro de ligne-numéro de caractère"%, où chaque symbole du code sera unique.
+  \item Améliorez le cryptage avec une substitution homophonique (les lettres fréquentes ont plusieurs codes), rédigez l'algorithme.
 \end{itemize}
 
 %\section{Le chiffrement DES (Data Encryption Standard)}

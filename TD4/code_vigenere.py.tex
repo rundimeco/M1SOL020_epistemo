@@ -1,8 +1,8 @@
 \begin{python}
 import json
-f = open("Epistemo-TD4-vigenere.json")
-dico_vigenere = json.load(f)
-f.close()
+with open("Epistemo-TD4-vigenere.json") as f:
+  dico_vigenere = json.load(f)
+
 message_base = "TOTO"#seulement des majuscules
 cle = "TOKEN"#la clé n'a pas de signification
 while len(cle)<len(message_base):

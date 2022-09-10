@@ -19,7 +19,7 @@
 \end{minipage}
 }
 
-\textcolor{blue}{\textbf{Attention, le dernier exercice est à rendre sur Moodle pour le 08/12/2019}}
+%\textcolor{blue}{\textbf{Attention, le dernier exercice est à rendre sur Moodle pour le 08/12/2019}}
 
 \section{Annotation linguistique}
 %  \subsection{ Fouille d'opinion et de sentiments sur des données textuelles}
@@ -50,9 +50,9 @@ Annotez le paragraphe ci-dessous et comparez vos résultats avec votre voisin.
 Pour résoudre (une partie) des problèmes d'annotation, on peut avoir recours à l'avis de plusieurs experts ou à l'avis de la foule (myriadisation).
 
   \subsection{Les principes du crowdsourcing}
- Pour en comprendre les buts et les principes, allez observer le travail d'Alice Millour, doctorante en TAL à la Maison de la Recherche:
+ Pour en comprendre les buts et les principes, allez observer le travail d'Alice Millour, docteure en TAL de Sorbonne Université :
 \begin{itemize}
-\item \url{https://bisame.paris-sorbonne.fr/recettes/} 
+\item \url{http://bisame.paris-sorbonne.fr/recettes/} 
 \item \url{http://krik.paris-sorbonne.fr/} 
 \end{itemize}
  
@@ -60,7 +60,7 @@ Pour résoudre (une partie) des problèmes d'annotation, on peut avoir recours �
 
   \subsection{ Avantages et inconvénients du crowdsourcing}
 
- Quels peuvent-ils être ?
+ Que peuvent ils être ?
 
 
 
@@ -100,13 +100,13 @@ Total	&	&	&	&	&	&	&\\
 \end{small}
 Calculez pour chaque étiquette du jeu d'annotation le pourcentage d'accord réel (somme des cases grisées*100/nombre total d'échantillons).
 
-  \subsection{ Accord inter-annotateur}
+  \paragraph{Accord inter-annotateurs}
 
  La seconde étape est d'évaluer des annotations. Les échantillons utilisables (pour une analyse statistique, un classifieur automatique, etc.) sont ceux pour lesquels un grand nombre d'annotateurs s'accordent.
 
 Calculez le pourcentage d'accord réel pour chaque étiquette. Reportez ces résultats dans un tableau récapitulatif.
 
- Pour vérifier que l'accord inter-annotateur est plus fort que le hasard, on peut mesurer le Kappa de Cohen :
+ Pour vérifier que l'accord inter-annotateurs est plus élevé que le hasard, on peut mesurer le Kappa de Cohen :
 
 $K = \frac{P_o - P_e}{1-P_e}$
 
@@ -114,7 +114,7 @@ Où $P_o$ est la proportion d'accord observé (somme des effectifs diagonaux div
 Où $P_e$ est la proportion d'accord aléatoire (somme des produits des effectifs marginaux pour une même classe, divisée par le carré de la taille de l'échantillon)
 %Reportez ces résultats ($P_o$, $P_e$ et K) dans un tableau récapitulatif.
 
-Evaluez le taux d'accord entre vous et votre voisin au moyen du code ci-dessous (Notebook sur Moodle) où pour chaque annotateur on crée une liste correspondant aux étiquettes données dans l'ordre (cf listes \texttt{annotateur1} et \texttt{annotateur2} du code ci-après).
+Évaluez le taux d'accord entre vous et votre voisin au moyen du code ci-dessous (Notebook sur Moodle) où pour chaque annotateur on crée une liste correspondant aux étiquettes données dans l'ordre (cf listes \texttt{annotateur1} et \texttt{annotateur2} du code ci-après).
 \newpage
 \begin{python}
 from nltk import agreement
@@ -141,17 +141,18 @@ On peut désormais représenter cela sous forme d'une matrice de confusion :
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix
-
 cm = confusion_matrix(annotateur1, annotateur2)
 classes = sorted(list(set(annotateur1+annotateur2)))
-
 fig, ax = plt.subplots(figsize=(10,10))
-sns.heatmap(cm, annot=True, xticklabels=classes, yticklabels=classes,cmap=plt.cm.Reds )
+sns.heatmap(cm, 
+	annot=True, 
+	xticklabels=classes, 
+	yticklabels=classes,
+	cmap=plt.cm.Reds )
 plt.ylim([len(classes), 0])
-
 plt.show()
 \end{python}
-  \subsection{Finalisation et évaluation des scores (à finir à la maison et à rendre en Binôme)}
+  \subsection{Finalisation}% et évaluation des scores (à finir à la maison et à rendre en Binôme)}
 Vous rendrez un notebook Python qui compilera vos résultats. Tout d'abord, annotez chacun de votre côté l'exemple suivant :
  "Je me promène dans la campagne, au milieu des champs. J'arrive vers la magnifique ferme de mon voisin, et je remonte le chemin afin d'aller admirer son potager. Cependant, arrivé à la clôture, je me rends compte que la belle ferme le voile."
 
@@ -164,7 +165,8 @@ Calculez les scores $P_o$, $P_e$ et K puis répondez aux questions suivantes:
   \item De quelle façon pourrions-nous améliorer les scores d'accord?
 \end{itemize}
 
-\textcolor{blue}{\textbf{Vous rendrez ceci sur Moodle pour le 08/12/2019}}
+%\textcolor{blue}{\textbf{Vous rendrez ceci sur Moodle pour le 08/12/2019}}
+
 
 \noindent\fcolorbox{red}{lightgray}{
 \begin{minipage}{15cm}
